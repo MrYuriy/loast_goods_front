@@ -2,6 +2,10 @@
   "name": "z96sd1--run",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "10.17.0",
+    "npm": "6.11.3"
+  },
   "dependencies": {
     "@syncfusion/ej2": "18.2.54",
     "@syncfusion/ej2-base": "18.2.54",
