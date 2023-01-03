@@ -31,6 +31,7 @@ export class Default extends SampleBase {
         var useInvetIdx = this.spreadsheet.sheets[1].usedRange.rowIndex;
         const adreses = []
         const inventory = []
+        const adreses_archive = []
         
         
         
@@ -45,15 +46,24 @@ export class Default extends SampleBase {
       await  this.spreadsheet.getData('Inventory'+'!'+'G1:H'+useInvetIdx).then((cells)=>{
             cells.forEach((cell, key)=>{
                 inventory.push(cell.value);   
-        })        
+                })        
         })
+
+        await  this.spreadsheet.getData('Archive'+'!'+'C1:D'+useTransIdx).then((cells)=>{
+            // console.log(cells)
+             cells.forEach((cell, key)=>{
+                 adreses_archive.push(cell.value);   
+                  })
+         })
         
         const data = {
-            'adreses':adreses,'inventory':inventory
+            'adreses':adreses,
+            'inventory':inventory,
+            'adreses_archive':adreses_archive
             };
 
         console.log('dataaaaaaaaaaa >>>>',data);
-       const rezolt_data = await  axios.post('https://lost-goods.herokuapp.com/genadres/api/',  data ,)
+       const rezolt_data = await  axios.post('https://loastgoods-production.up.railway.app/genadres/api/',  data ,)
        console.log(rezolt_data.data['list_adreses'])
        this.setState({rezolt: rezolt_data.data['list_adreses'] })
        console.log(this.rezolt)
@@ -83,6 +93,7 @@ export class Default extends SampleBase {
                     <SheetsDirective>
                     <SheetDirective name='Transaction'></SheetDirective> 
                     <SheetDirective name='Inventory' ></SheetDirective> 
+                    <SheetDirective name='Archive'></SheetDirective>
                     </SheetsDirective>
                     </SpreadsheetComponent>
 
