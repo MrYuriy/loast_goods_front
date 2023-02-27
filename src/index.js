@@ -51,7 +51,7 @@ export class Default extends SampleBase {
 
         // console.log(tags)
         const parsed = queryString.parse(location.search);
-
+        console.log(parsed);
         const from_location = parsed.from_location;
         const to_location = parsed.to_location;
         const from_location_arc = parsed.from_location_arc;
@@ -61,7 +61,7 @@ export class Default extends SampleBase {
 
     //    await  this.spreadsheet.getData('Transaction'+'!'+`${from_location}1:${getNextLetter(from_location)}`+useTransIdx).then((cells)=>{
     await  this.spreadsheet.getData('Transaction'+'!'+`${from_location}1:${from_location}`+useTransIdx).then((cells)=>{
-           
+        
             cells.forEach((cell, key)=>{
                 adreses.push(cell.value);   
                  })
@@ -109,7 +109,7 @@ export class Default extends SampleBase {
 
         console.log('dataaaaaaaaaaa >>>>',data);
     //    const rezolt_data = await  axios.post('https://loastgoods-production.up.railway.app/genadres/api/',  data ,)
-       const rezolt_data = await  axios.post('https://loast-goods.onrender.com/genadres/api/',  data ,)
+       const rezolt_data = await  axios.post('https://zwrotylm.onrender.com/adreses/genadres/api/',  data ,)
 
 
     //    const rezolt_data = await  axios.post('http://127.0.0.1:8000/genadres/api/',  data ,)
